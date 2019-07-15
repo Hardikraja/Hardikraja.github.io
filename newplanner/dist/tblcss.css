@@ -1,0 +1,73 @@
+#table12 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+#table12 td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#table12 tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+#table25 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+}
+
+#table25 td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#table25 tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+#table13 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+  
+}
+
+#table13 td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#table13 tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+#table14 {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  
+  
+}
+
+#table14 td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#table14 tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+

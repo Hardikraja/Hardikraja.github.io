@@ -1,0 +1,76 @@
+body{
+	font-family: 'Lato', sans-serif;
+	 background-image: url("black-wallpaper.png");
+}
+
+.table-wrapper{
+	
+	float:left;
+	margin-left:40px;
+	margin-top:100px;
+	position:absolute;
+}
+
+.table-wrapper h2{
+	text-align: left;
+	color:white;
+	margin-left:10px;
+	margin-bottom: 5px;
+	text-decoration: underline;
+}
+
+#tablesh  th {
+	color : white;	
+	padding: 10px;
+	font-size: 23px;
+	text-decoration: underline;
+}
+
+#tablesh  td {
+	color : white;	
+	padding: 10px;
+	font-size: 20px;
+}
+
+ .buttons-wrapper{
+	
+	
+ 	display: inline-block;
+  	position: absolute;	
+	bottom:35px;
+	margin-left: 40px;
+}
+  
+ .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+  
+}
+
+
+
+form{
+	display: block;
+}
+
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}

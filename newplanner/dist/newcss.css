@@ -1,0 +1,105 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+input[type=text]  {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#selectid{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #333;
+  font-size: 1.6rem;
+  background-color: #FAFAFA;
+  -webkit-font-smoothing: antialiased;
+}
+
+.logo {
+  margin: 1.6rem auto;
+  text-align: center;
+}
+
+a,
+a:visited {
+  color: #0A9297;
+}
+
+footer {
+  text-align: center;
+  margin: 1.6rem 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.inputform{
+    width :400px;
+    float: left;
+    padding-left: 25px;
+    margin: auto;
+    height:400px;
+}
+
+
+
+.datatableform{
+	height: 400px;
+	width:550px;
+	/* background-color: blue; */ 
+	float:left;
+	margin-left: 25px;
+	margin-top: 20px;
+}
+
+.datatableform1{
+	height: 400px;
+	width:390px;
+	/* background-color: blue; */ 
+	float:left;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.maindiv{
+    height: 400px;
+    width : 100%;
+	position:relative; 
+}
+
+.tablesdiv{
+	height:330px;
+	width:100%;
+	 /* background-color: #E0F00F ;	  */
+	float:left;
+	
+}
+.container {
+  
+  width: 380px;
+  margin: 1.6rem auto;
+  max-width: 42rem;
+  text-align: center;
+  float: left;
+  padding-left: 25px;
+}
+
+.demo-picked {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.demo-picked span {
+  font-weight: bold;
+}
