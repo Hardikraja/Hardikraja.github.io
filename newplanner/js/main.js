@@ -1,10 +1,25 @@
 $(document).ready(function(){
-
+var str = "";
 
 $('#add-task-form').on('submit', function(e){
 		addTask(e);
 });
 
+$('#buildyourform').on('click','#download_link',function() {
+	
+	console.log("Hellotextfileji");
+  var data = new Blob([str], {type: 'text/plain'});
+
+  	console.log(str);
+	console.log(data);
+	str = "";
+	var url = window.URL.createObjectURL(data);
+	
+	console.log(url);
+	document.getElementById('download_link').href = url;
+	document.getElementById('download_link').download = "downloaded";
+
+});
 
 $('#buildyourform').on('click','#makechng',function() {
 	var checkedIds = $(".chk:checked").map(function() {
@@ -14,6 +29,18 @@ $('#buildyourform').on('click','#makechng',function() {
   /*}).toArray();
   alert(checkedIds.join(", "));*/
 	
+});
+
+$('#buildyourform').on('click','#mailid',function() {
+	var mailadd;
+  var person = prompt("Please enter your maid address:", "");
+  if (person != null || person != "") {
+    mailadd = person;
+  } else {
+    alert("Enter valid mail id");
+  }
+
+	window.open('mailto:'+mailadd+'?subject=task&body='+str+'');
 });
 
 
@@ -38,6 +65,7 @@ displayremaintable();
 
 function displaytasktable(){
 	var taskList1 = JSON.parse(localStorage.getItem('tasks_list'));
+	
 	console.log("Hello1");
 	if(localStorage.getItem('tasks_list')!=null){
 		console.log("Hello2");
@@ -46,10 +74,10 @@ function displaytasktable(){
 			$('#table25').append('<tr id="' + value.id + '">'+
 								'<td><a href="#" id="remove-task" data-id="'+value.id+'">' + value.task_name + '</td>' +
 								'<td>' + value.task_priority + '</td>' +
-								'<td>' + value.task_date + '</td>' +
-								
+								'<td>' + value.task_date + '</td>' +				
 								'</tr>'
 								);
+			
 			
 		})
 }
@@ -114,6 +142,8 @@ function displayallTasks() {
 		console.log("Hello2");
 		$.each(taskList1,function(key,value){
 			if(to_date(value.task_date)){
+				str = str + value.task_name + "  ";
+
 				if(value.task_done==0){
 			$('#tablesh').append('<tr id="' + value.id + '">'+
 								'<td>' + value.task_name + '</td>' +
