@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- <script  src="js/index.js"></script> -->
+
+  <script src="js/BST.js"></script>
+  <script src="js/infixtopostfix.js"></script>
+  <script src="js/validatestring.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)};
+    gtag('js', new Date());
+    gtag('config', 'UA-89940905-27');
+  </script>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="css/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />    
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<title>Simulator</title>
+
+	<!-- css styles -->
+	<style type="text/css">
+
+        td,th{
+            border:solid;
+            width:10g0px;
+        }
+
+        a{
+		text-decoration: none;
+		color: #000;
+	}
+	.visibleOff {
+	visibility: hidden;
+	}
+	.visibleOn {
+	visibility: visible;
+	}
+	.myClass {
+        padding-top: 0px;
+    }
+    .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    font-size: 1em;
+    padding-top: 50px;
+    padding-left: 20px;
+    }
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+
+      /* Position the tooltip text */
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -60px;
+
+      /* Fade in tooltip */
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+    }
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+		 .header
+		 {
+		 	/*padding : 1%;*/
+		 	padding-top: 460px;
+	        background-color: 009900;
+	        width: 95%;
+	        /*border: solid black; */
+		 }
+         .leftdiv
+         {
+         	float: left;
+         	padding : 1%;
+	        background-color: 009900;
+	        width: 350px;
+          height: 650px;
+	        /*border: solid black; */
+         }
+         .middlediv
+         {
+	        float: left;
+	        padding : 1%;
+	        background-color: 009900;
+	        width: 350px;
+          overflow: scroll;
+          height: 650px;
+	        /*border: solid black; */
+         }
+         .rightdiv
+         {
+         	float: left;
+         	padding : 1%;
+	        background-color: 009900;
+	        width: 650px;
+          height: 650px;
+	        /*border: solid black;*/ 
+         }
+        .mainBorder {
+        border:#000 5px solid;
+        /*margin-top: 20px;*/
+        /*margin-bottom: 100px;*/
+        margin-left: 20px;
+        height: 700px;
+        width: 1480px;
+    	}
+    </style>
+
+</head>
+<body onload="draw()" onresize="draw()"> <h2 align="center">Operator Precedence </h2>
+
+	<div class="mainBorder" id="canvasDiv">
+    <br>
+		<div class="leftdiv" id="leftDiv">
+		<center>
+            <table   id ="precedence_table" border="solid" height="200px" width="300px" cellspacing="3">
+    <tr>
+    <th rowspan="2"> LHS Operator</th>
+    <th colspan="9"> RHS Operator</th>
+    </tr>
+    <tr align="center">
+    <td>+</td>
+    <td>*</td>
+        <td>-</td>
+        <td>/</td>
+        <td>^</td>
+    <td>(</td>
+        <td>)</td>
+        <td>$</td>
+    </tr>
+    <tr align="center">
+
+    <td>+</td>
+        <td>></td>
+        <td><</td>
+        <td>></td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td>></td>
+        <td>></td>
+
+
+    </tr>
+     <tr align="center">
+
+    <td>*</td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td><</td>
+        <td><</td>
+        <td>></td>
+        <td>></td>
+
+
+    </tr>
+    <tr align="center">
+     <td>-</td>
+        <td><</td>
+        <td><</td>
+        <td>></td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td>></td>
+        <td>></td>
+
+</tr>
+    <tr align="center">
+     <td>/</td>
+        <td>></td>
+        <td><</td>
+        <td>></td>
+        <td>></td>
+        <td><</td>
+        <td><</td>
+        <td>></td>
+        <td>></td>
+
+</tr>
+    <tr align="center">
+     <td>^</td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td><</td>
+        <td>></td>
+        <td>></td>
+
+</tr>
+    <tr align="center">
+     <td>(</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td>=</td>
+        <td></td>
+
+</tr>
+    <tr align="center">
+     <td>)</td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td>></td>
+        <td></td>
+        <td>></td>
+        <td>></td>
+
+</tr>
+ <tr align="center">
+     <td>$</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td><</td>
+        <td></td>
+        <td>=</td>
+
+</tr>
+</table>
+			<!-- Taking input -->
+            <br><br>
+
+        	<!-- Text area for taking input -->
+
+            <h4>Step 1.. Input String</h4>
+            <h4>Step 2.. Click Submit</h4>
+            <h4 id="status"><b></b></h4>
+
+	        </br></br>
+        <h4 class="myClass" style="margin: 2; padding: 0">&nbsp;&nbsp;<font size="5">Input String : </font></h4>
+            <input type="text" id="input_grammar" placeholder="i.e. $a+b*c$" style="width: 172px; height: 50px; margin: 2; padding: 0"/>
+    <br>
+    <br>
+
+
+		<button style="margin: 2" onclick="chkstring()" ><b>Submit<b></button>
+
+	        <button style="margin: 2" onclick="location.reload()"><b>Clear<b></button>
+</center>
+    <br>
+
+</div>
+<div class="middlediv" id="midDiv">
+	<h4 class="myClass" id="rmLRText" align="center" style="margin-right: 20px;"><font size="4"><u>Operator Precedence Parse Table</u></font></h4>
+  <br>
+	<table id="tb1" style="font-size:26px; margin-left :25px; border-radius: 15px">
+        <tr>
+            <th>Current Operator</th>
+            <th>Stack </th>
+
+        </tr>
+    </table>
+</div>
+    <div class="rightdiv" id="rigDiv">
+
+		    	
+		<br>
+		<br>
+		<b>Parse Tree:</b>
+
+		<br>
+
+    
+          <canvas id="canvas" width="300px" height="300px" style="overflow: auto; border:1px solid #000000;"></canvas>
+
+		
+    <!-- <canvas id="myCanvas" width="300" height="300" style="border:1px solid #000000;"> -->
+
+
+	</div>
+
+	</div>
+</body>
+	<script>
+		var inps ="";
+		var arr = [];
+		var cnt = 0;
+		var temp =0;
+    var temp1 = 1;
+    var ope = "";
+    var flagt = 0;
+    var co = "";
+
+    var flag = 0;
+    var tos = "";
+    var tma = "";
+    var tmb = "";
+    var insvl = "";
+    var stkvalue = "";
+    var table;
+    function  makeTable() {
+      insert();
+
+			inps = document.getElementById('input_grammar').value;	
+			table = document.getElementById('tb1');
+      document.getElementById("status").innerHTML = "<u>Expression "+ inps.substr(1).slice(0, -1) + " is valid</u>";
+      console.log(inps.length);
+      
+      for(i=0;i<inps.length;i++)
+      {
+        if(!isLetter(inps.charAt(i)+""))
+        {
+        ope = ope + inps.charAt(i);
+        }
+      }
+
+      console.log(ope);
+
+      for(var i=0;i<ope.length;i++)
+      {
+        if(i==0)
+        {
+          var row = table.insertRow(-1);
+
+          var cell1 = row.insertCell(0);
+          cell1.style = "border-color : white";
+          var cell2 = row.insertCell(1);
+          
+          cell2.innerHTML = "$";
+          insvl = "$";
+          tos = "$";
+        }
+        else
+        { 
+          keepspace();
+          flag= 0;
+
+        for (var j = 0; j < insvl.length; j++) {
+          
+          var row = table.insertRow(-1);
+          var cell1 = row.insertCell(0);
+            
+
+            if(flag==0)
+            {
+              cell1.innerHTML=ope.charAt(i);
+              co = ope.charAt(i);
+              flag=1;
+            }
+            else{
+              cell1.style = "border-color :white";
+            }
+
+          var cell2 = row.insertCell(1);
+          cell2.innerHTML=insvl.charAt(j);
+          }
+
+          if(isBig(tos,co)=='<'+"")
+          {
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            cell1.style = "border-color :white";
+
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = co;
+            insvl = insvl+co;
+            tos = co;
+          }
+
+         
+          else if(co=='$'+"")
+          {
+            keepspace();
+            var cn = insvl.length-1;
+            while(cn > 0)
+            {
+              var row = table.insertRow(-1);
+              var cell1 = row.insertCell(0);
+              cell1.style = "border-color : white";
+              var cell2 = row.insertCell(1);
+              cell2.innerHTML = insvl.charAt(cn) + " will be popped out";   
+              cn--;
+            }
+            console.log("t");
+            flagt = 1;
+          }
+
+          else if(co==')'+"")
+          {
+            console.log(co);
+            console.log("true g");
+            console.log(insvl);
+            keepspace();
+            var n = insvl.length-1;
+            while(insvl.charAt(insvl.length-1)+""!='('+"")
+            {
+              console.log("true g1");
+              var row = table.insertRow(-1);
+              var cell1 = row.insertCell(0);
+              cell1.style = "border-color : white";
+              var cell2 = row.insertCell(1);
+              cell2.innerHTML = insvl.charAt(insvl.length-1) + " will be popped out";   
+              insvl = insvl.slice(0, -1);
+              //n--;
+            }
+            insvl = insvl.slice(0,-1);
+            var row = table.insertRow(-1);
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = " tos = ( , co = ) (=)";
+          }
+
+          else if(isBig(tos,co)=='>'+"")
+          {
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = co + " will not be pushed";
+          }
+
+
+          else
+          {
+
+          }
+
+        }
+        if(flagt == 1)
+        {
+          keepspace();
+          var row = table.insertRow(-1);
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = " tos = $ , co = $ (=)";
+        }
+
+      }
+      
+      
+      }
+		
+      function keepspace() {
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        cell1.style="border-color : white";
+        var cell2 = row.insertCell(1);
+        cell2.style="border-color: white";
+      }
+      function isBig(am,pm) {
+        var str = "+*-/^()$";
+        var strarr = ["><><<<>>",">>>><<>>","<<><<<>>","><>><<>>",">>>>><>>","<<<<<<= ",">>>>> >>","<<<<<< ="];
+        var result ="";
+        var x,y;
+        var cnt=0;
+        for (var i = 0;i<str.length;i++) {
+            if(str.charAt(i)==am)
+            {
+              x=cnt;
+              break;
+            }
+            cnt++;
+          } 
+        cnt=0;
+        for(var i = 0;i<str.length;i++){
+          if(str.charAt(i)==pm)
+          {
+            y=cnt;
+            break;
+          }
+          cnt++;
+        }
+
+        result = strarr[x].charAt(y);
+        return result;
+      }
+
+
+	</script>
+ <script src="js/theCode.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
+<script src="js/jquery.alerts.js"></script> 
+
+
+
+
+</html>
