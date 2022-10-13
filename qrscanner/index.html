@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="instascan.min.js"></script>
+        <script src="https://unpkg.com/vue-qrcode-reader@3.1.0/dist/VueQrcodeReader.umd.min.js"></script>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            //import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyCIVjI4LIJWuxMWaeiTQXxN7L9W-1p5XDQ",
+              authDomain: "checkin-checkout-2cece.firebaseapp.com",
+              databaseURL: "https://checkin-checkout-2cece.firebaseio.com",
+              projectId: "checkin-checkout-2cece",
+              storageBucket: "checkin-checkout-2cece.appspot.com",
+              messagingSenderId: "574518657906",
+              appId: "1:574518657906:web:9d8ce5de3a42ed59d413eb"
+            };
+          
+             // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            // Initialize Firebase
+            //const app = initializeApp(firebaseConfig);
+            // Reference to the database
+            const db = firebase.firestore();
+
+
+        // Getting Data
+        function getData() {
+        
+
+        db.collection("members")
+            .get()
+            .then(snapshot => {
+                snapshot.docs.forEach(doc => console.log("Hardik " + doc.id + doc.data().name));
+            });
+        }
+
+        getData();
+        
+          </script>
+    </head>
+    <body>
+        <video id="preview"></video>
+        <script type="text/javascript">
+            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+            scanner.addListener('scan', function (content) {
+              console.log(content);
+            });
+            Instascan.Camera.getCameras().then(function (cameras) {
+              if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+              } else {
+                console.error('No cameras found.');
+              }
+            }).catch(function (e) {
+              console.error(e);
+            });
+          </script>
+    </body>
+</html>
